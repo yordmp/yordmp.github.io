@@ -284,6 +284,17 @@
   });
   window.applyLang=applyLang;
 
+  // клики по #contact: плавный скролл к блоку, без #contact в адресной строке
+  document.querySelectorAll('a[href="#contact"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var target=document.getElementById('contact');
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    });
+  });
+
   // ===== TICKER: marquee with easter egg + time/score drum =====
   (function(){
     var track=document.getElementById('tickerTrack');
