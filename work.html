@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>yordmp — работы</title>
+<title>yordmp</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,20 +21,24 @@
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 50px}
 
-  .ticker{position:relative;background:var(--bg);color:var(--ink);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line);display:flex;align-items:center;height:var(--ticker-h);white-space:nowrap;overflow:hidden;cursor:pointer}
-  .ticker-marquee{flex:1;overflow:hidden;min-width:0;padding-left:50px}
+  /* ---------- TICKER ---------- */
+  .ticker{position:relative;background:var(--bg);color:var(--ink);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line);display:flex;align-items:center;height:var(--ticker-h);white-space:nowrap;overflow:hidden}
+  .ticker-marquee{flex:1;overflow:hidden;min-width:0}
   .ticker-track{display:inline-flex;animation:ticker 80s linear infinite;will-change:transform}
   .ticker-track span{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:0.01em;color:var(--ink)}
   .ticker-track .egg{color:var(--ink)}
   .ticker-track .sep{color:var(--ink-faint);padding:0 14px}
   @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   .ticker:hover .ticker-track{animation-play-state:paused}
+  .ticker-marquee{padding-left:50px}
   .ticker-drum{flex:none;display:flex;align-items:center;justify-content:center;padding:0 50px 0 22px;border-left:0.5px solid var(--line);font-family:var(--mono);font-size:12px;letter-spacing:0.02em;color:var(--ink);height:100%}
   .drum-window{height:var(--ticker-h);overflow:hidden;position:relative;width:108px}
   .drum-roll{display:flex;flex-direction:column}
   .drum-cell{height:var(--ticker-h);display:flex;align-items:center;justify-content:center;flex:none;font-variant-numeric:tabular-nums;white-space:nowrap}
   .ticker:hover .drum-roll{animation-play-state:paused}
 
+
+  /* ---------- HEADER (blur) ---------- */
   header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.72);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:var(--header-h)}
   .logo{font-family:var(--sans);font-weight:700;font-size:26px;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;line-height:1}
@@ -42,49 +47,54 @@
   .nav-links a:hover{color:var(--ink)}
   .nav-cta{font-family:var(--sans);font-size:17px;font-weight:400;color:var(--ink-faint);text-decoration:none;line-height:1;transition:color var(--dur-fast) var(--ease)}
   .nav-cta:hover{color:var(--ink)}
-  .nav-links a.current{color:var(--ink)}
   .lang{font-size:17px;display:flex;gap:1px}
   .lang button{background:none;border:none;cursor:pointer;font:inherit;padding:0;color:rgba(30,30,30,0.4);transition:color var(--dur-fast) var(--ease)}
   .lang button.on{color:var(--ink)}
   .lang .sep{color:rgba(30,30,30,0.4)}
 
+  /* ---------- SHARED SECTION GRID (sticky label) ---------- */
   .sec{display:grid;grid-template-columns:var(--col) 1fr;gap:0;align-items:start}
-
   .sec-label{font-family:var(--mono);font-size:13px;line-height:1.5;letter-spacing:0.02em;color:var(--ink-soft);position:sticky;top:calc(var(--header-h) + 30px);align-self:start;padding-right:20px}
-  .sec-label.cap{text-transform:none}
   .sec-body{max-width:none;min-width:0}
-  .sec.head-pad{padding-top:70px}
-  .sec.series{padding-top:90px}
 
-  .feed{display:flex;flex-direction:column;gap:48px}
-  .series .feed{gap:20px}
-  .series .feed{gap:20px}
+  /* ---------- ABOUT ---------- */
+  .about{padding:110px 0 100px}
+  .about .sec-body{min-height:0}
+  .about .stmt{font-family:var(--sans);font-weight:400;font-size:38px;line-height:1.38;letter-spacing:-0.01em;color:var(--ink);max-width:none}
+  .about .stmt strong{font-weight:700}
+  .inline-photo{display:inline-block;width:1.25em;height:1.25em;border-radius:50%;background:var(--surface) center/cover no-repeat;background-image:url('img/photo.jpg');vertical-align:-0.28em;margin:0 0.14em;border:0.5px solid var(--line)}
+  .namegroup{white-space:nowrap}
+  br.m-only{display:none}
+
+  /* ---------- WORKS ---------- */
+  .works{padding:0 0 10px}
+  .feed{display:flex;flex-direction:column;gap:64px}
   .work{display:flex;flex-direction:column;gap:16px}
   .work-frame{position:relative;overflow:hidden;background:var(--surface);width:100%;aspect-ratio:1575/600;cursor:zoom-in}
   .work-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .work-cap{font-family:var(--sans);font-weight:500;font-size:16px;line-height:1.3;color:var(--ink);max-width:none}
 
-  .pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .cell{position:relative;overflow:hidden;background:var(--surface);aspect-ratio:400/267;cursor:zoom-in}
-  .cell img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .wide{position:relative;overflow:hidden;background:var(--surface);width:100%;aspect-ratio:820/312;cursor:zoom-in}
-  .wide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-
-  .vpair{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
-  .vert{position:relative;overflow:hidden;background:var(--surface);width:100%;aspect-ratio:400/710;border:0.6px solid var(--ink-faint);cursor:zoom-in}
-  .vert img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-
+  /* ---------- LIGHTBOX ---------- */
   .lightbox{position:fixed;inset:0;z-index:200;background:rgba(20,20,20,0.92);display:none;align-items:center;justify-content:center;padding:40px;cursor:zoom-out}
   .lightbox.open{display:flex}
   .lightbox img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
   .lightbox-close{position:fixed;top:24px;right:30px;width:42px;height:42px;border:1px solid rgba(255,255,255,0.4);background:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;border-radius:50%;transition:border-color var(--dur) var(--ease)}
   .lightbox-close:hover{border-color:#fff}
+  .work-cap{font-family:var(--sans);font-weight:500;font-size:16px;line-height:1.3;color:var(--ink);max-width:none}
+
+  .vpair{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+  .vert{position:relative;overflow:hidden;background:var(--surface);width:100%;aspect-ratio:400/710;border:0.6px solid var(--ink-faint);cursor:zoom-in}
+  .vert img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
+  /* ---------- BRIDGE ---------- */
+  .bridge{padding:24px 0 117px}
+  .bridge .sec-body a{font-family:var(--sans);font-weight:500;font-size:20px;line-height:1.3;color:var(--ink-faint);text-decoration:none;display:inline-block;transition:color var(--dur-fast) var(--ease)}
+  .bridge .sec-body a:hover{color:var(--ink)}
 
   .reveal{opacity:0;transform:translateY(22px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
   .reveal.in{opacity:1;transform:none}
 
   /* ---------- CONTACT BLOCK (footer) ---------- */
-  footer{border-top:1px solid var(--line);padding:73px 0 48px;margin-top:96px}
+  footer{border-top:1px solid var(--line);padding:73px 0 48px;margin-top:0}
   .contact-cta{display:block;margin-bottom:56px}
   .contact-cta .say{font-family:var(--sans);font-weight:600;font-size:clamp(30px,5.5vw,72px);line-height:0.98;letter-spacing:-0.03em;color:var(--ink)}
   .contact-cta .mail-xl{display:inline-block;margin-top:8px;font-family:var(--sans);font-weight:600;font-size:clamp(30px,5.5vw,72px);line-height:1.0;letter-spacing:-0.03em;color:var(--ink);text-decoration:none;transition:color var(--dur-fast) var(--ease)}
@@ -93,19 +103,23 @@
   .ccol .links{display:flex;flex-direction:row;flex-wrap:wrap;gap:10px 32px;align-items:baseline}
   .ccol a{font-family:var(--sans);font-weight:400;font-size:18px;letter-spacing:-0.01em;color:var(--ink-faint);text-decoration:none;transition:color var(--dur-fast) var(--ease);display:inline-block}
   .ccol a:hover{color:var(--ink)}
-  
-  
+  @media(max-width:640px){.contact-cols{gap:10px 28px}}
 
   @media(max-width:860px){
     .wrap{padding:0 24px}
     .ticker-marquee{padding-left:24px}.ticker-drum{padding:0 24px 0 18px}
-    .nav{height:64px}.logo{font-size:25px}
-    .nav-links{gap:22px}.nav-links a,.lang{font-size:16px}.nav-cta{font-size:16px}
+    .nav{height:58px}
+    .logo{font-size:21px}
+    .nav-links{gap:18px}
+    .nav-links a,.lang{font-size:15px}.nav-cta{font-size:15px}
     .sec{grid-template-columns:1fr;gap:14px}
-    .sec-label{position:static;top:auto;padding-right:0}
-    .sec.head-pad{padding-top:44px}.sec.series{padding-top:54px}
+    .sec-label{position:static;top:auto}
+    .about{padding:48px 0 44px}
+    .about .sec-body{min-height:0}
+    .about .stmt{font-size:20px;line-height:1.4}
+    br.m-only{display:inline}
+
     .vpair{gap:16px}
-    .contact-cols{gap:10px 28px}
   }
   @media(prefers-reduced-motion:reduce){*{transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}.ticker-track{animation:none}}
 </style>
@@ -127,7 +141,7 @@
   <div class="wrap nav">
     <a href="index.html" class="logo">yordmp</a>
     <div class="nav-links">
-      <a href="work.html" class="current" data-en="Work" data-ru="Работы">Работы</a>
+      <a href="work.html" data-en="Work" data-ru="Работы">Работы</a>
       <a href="#contact" class="nav-cta" data-en="Get in touch" data-ru="Связаться">Связаться</a>
       <span class="lang"><button data-lang="en">En</button><span class="sep">/</span><button class="on" data-lang="ru">Ru</button></span>
     </div>
@@ -136,103 +150,54 @@
 
 <main class="wrap">
 
-  <!-- ===== EDITORIAL COVERS — 16 ===== -->
-  <section class="sec head-pad">
-    <div class="sec-label cap reveal" data-en="editorial covers" data-ru="редакционные обложки">редакционные обложки</div>
+  <!-- ABOUT -->
+  <section class="sec about">
+    <div class="sec-label reveal" data-en="about" data-ru="о себе">о себе</div>
+    <div class="sec-body reveal">
+      <p class="stmt" data-en="Hello!<br class='m-only'> My name is <span class='namegroup'><span class='inline-photo'></span>&nbsp;<strong>Artem&nbsp;Ponomarev</strong></span>. I'm a&nbsp;graphic designer specializing in&nbsp;editorial design. I&nbsp;work at&nbsp;<strong>Sports”</strong>, creating covers, visual series and&nbsp;infographics for&nbsp;stories about sport — and&nbsp;beyond." data-ru="Привет!<br class='m-only'> Меня&nbsp;зовут <span class='namegroup'><span class='inline-photo'></span>&nbsp;<strong>Артем&nbsp;Пономарев</strong></span>. Я&nbsp;графический дизайнер, специализируюсь на&nbsp;редакционном дизайне. Работаю в&nbsp;<strong>Спортс”</strong>, создаю обложки, визуальные серии и&nbsp;инфографику для&nbsp;материалов о&nbsp;спорте и&nbsp;не&nbsp;только.">Привет!<br class="m-only"> Меня&nbsp;зовут <span class="namegroup"><span class="inline-photo"></span>&nbsp;<strong>Артем&nbsp;Пономарев</strong></span>. Я&nbsp;графический дизайнер, специализируюсь на&nbsp;редакционном дизайне. Работаю в&nbsp;<strong>Спортс”</strong>, создаю обложки, визуальные серии и&nbsp;инфографику для&nbsp;материалов о&nbsp;спорте и&nbsp;не&nbsp;только.</p>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section class="sec works">
+    <div class="sec-label reveal" data-en="selected work" data-ru="избранные работы">избранные работы</div>
     <div class="sec-body">
       <div class="feed">
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-01.jpg" alt=""></div><div class="work-cap" data-en="Smertin on playing in Leninsk-Kuznetsky in the '90s" data-ru="Смертин – об игре в Ленинске-Кузнецком в 90-е">Смертин – об игре в Ленинске-Кузнецком в 90-е</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-02.jpg" alt=""></div><div class="work-cap" data-en="The biggest personal failures at the World Cups" data-ru="Главные личные неудачи на Чемпионатах мира">Главные личные неудачи на Чемпионатах мира</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-03.jpg" alt=""></div><div class="work-cap" data-en="The god of figure skating, even after an Olympic failure. What is the Malinin phenomenon?" data-ru="Бог фигурки – даже после олимпийского провала. В чем феномен Малинина?">Бог фигурки – даже после олимпийского провала. В чем феномен Малинина?</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-04.jpg" alt=""></div><div class="work-cap" data-en="All about Uzbekistan's rise: Khusanov, Shomurodov, Cannavaro" data-ru="Все о взлете сборной Узбекистана: Хусанов, Шомуродов, Каннаваро">Все о взлете сборной Узбекистана: Хусанов, Шомуродов, Каннаваро</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-05.jpg" alt=""></div><div class="work-cap" data-en="'I understand my son won't talk to me.' A long conversation with Bublik's father" data-ru="«Понимаю, что сын со мной общаться не будет». Большой разговор с отцом Бублика">«Понимаю, что сын со мной общаться не будет». Большой разговор с отцом Бублика</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-06.jpg" alt=""></div><div class="work-cap" data-en="Unpublished. The main heroes of Arsenal" data-ru="Неизданное. Главные герои Арсенала">Неизданное. Главные герои Арсенала</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-07.jpg" alt=""></div><div class="work-cap" data-en="A big interview with Savely Korostelev — the most notable Russian skier of the isolation era" data-ru="Большое интервью Савелия Коростелева – самого заметного лыжника России эпохи изоляции">Большое интервью Савелия Коростелева – самого заметного лыжника России эпохи изоляции</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-08.jpg" alt=""></div><div class="work-cap" data-en="The Bundesliga's breakout — a two-metre aesthete compared to Messi" data-ru="Открытие Бундеслиги – двухметровый эстет, которого сравнивают с Месси">Открытие Бундеслиги – двухметровый эстет, которого сравнивают с Месси</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-09.jpg" alt=""></div><div class="work-cap" data-en="What impressed me about Omsk after Petersburg? The 'Avangard' goalie started a blog on Sports.ru" data-ru="Чем меня впечатлил Омск после Петербурга? Вратарь «Авангарда» открыл блог на Спортсе’’">Чем меня впечатлил Омск после Петербурга? Вратарь «Авангарда» открыл блог на Спортсе’’</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-10.jpg" alt=""></div><div class="work-cap" data-en="Why do fighters fight if their religion forbids it?" data-ru="Почему бойцы дерутся, если это запрещает религия?">Почему бойцы дерутся, если это запрещает религия?</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-11.jpg" alt=""></div><div class="work-cap" data-en="'Vodnik' in trouble: wages unpaid. A world champion and Russia's best-attended club" data-ru="«Водник» в беде: не платят зарплату. Это чемпион мира и самый посещаемый клуб России">«Водник» в беде: не платят зарплату. Это чемпион мира и самый посещаемый клуб России</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-12.jpg" alt=""></div><div class="work-cap" data-en="LeBron's 2000 games — a feat that won't be repeated" data-ru="2000 матчей Леброна – достижение, которое не повторить">2000 матчей Леброна – достижение, которое не повторить</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-13.jpg" alt=""></div><div class="work-cap" data-en="How Russia's bloodiest bare-knuckle fighter lives" data-ru="Как живет самый кровавый кулачный боец России">Как живет самый кровавый кулачный боец России</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-14.jpg" alt=""></div><div class="work-cap" data-en="Unpublished. Usmanov brought victory closer by leaving the club" data-ru="Неизданное. Усманов приблизил победу, уйдя из клуба">Неизданное. Усманов приблизил победу, уйдя из клуба</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-15.jpg" alt=""></div><div class="work-cap" data-en="Byshovets's monologue on working with South Korea at the 1994 World Cup" data-ru="Монолог Бышовца о работе с Южной Кореей на ЧМ-1994">Монолог Бышовца о работе с Южной Кореей на ЧМ-1994</div></article>
-        <article class="work reveal"><div class="work-frame"><img src="img/work-cover-16.jpg" alt=""></div><div class="work-cap" data-en="You'll crave smelt — Petersburg's signature food. Bystrov and Radimov tell all" data-ru="Сейчас вам захочется корюшки – главной еды Петербурга. Рассказывают Быстров и Радимов">Сейчас вам захочется корюшки – главной еды Петербурга. Рассказывают Быстров и Радимов</div></article>
-      </div>
-    </div>
-  </section>
 
-  <!-- 1. ОИ-2026 — пара -->
-  <section class="sec series">
-    <div class="sec-label reveal" data-en="covers for the OG-2026: potential medals of Russian athletes" data-ru="обложки к ОИ-2026: потенциальные медали россиян">обложки к ОИ-2026: потенциальные медали россиян</div>
-    <div class="sec-body reveal">
-      <div class="pair">
-        <div class="cell"><img src="img/og-1.jpg" alt=""></div>
-        <div class="cell"><img src="img/og-2.jpg" alt=""></div>
-      </div>
-    </div>
-  </section>
+        <article class="work reveal">
+          <div class="work-frame"><img src="img/home-1.jpg" alt=""></div>
+          <div class="work-cap" data-en="Smertin on playing in Leninsk-Kuznetsky in the '90s" data-ru="Смертин – об игре в Ленинске-Кузнецком в 90-е">Смертин – об игре в Ленинске-Кузнецком в 90-е</div>
+        </article>
 
-  <!-- 2. НБА 25 лет — широкая + пара -->
-  <section class="sec series">
-    <div class="sec-label reveal" data-en="a series of covers on the last 25 years of the NBA" data-ru="серия обложек к материалам о последних 25 годах НБА">серия обложек к материалам о последних 25 годах НБА</div>
-    <div class="sec-body reveal">
-      <div class="feed">
-        <div class="wide"><img src="img/nba25-1.jpg" alt=""></div>
-        <div class="pair">
-          <div class="cell"><img src="img/nba25-2.jpg" alt=""></div>
-          <div class="cell"><img src="img/nba25-3.jpg" alt=""></div>
+        <article class="work reveal">
+          <div class="work-frame"><img src="img/home-2.jpg" alt=""></div>
+          <div class="work-cap" data-en="The biggest personal failures at the World Cups" data-ru="Главные личные неудачи на Чемпионатах мира">Главные личные неудачи на Чемпионатах мира</div>
+        </article>
+
+        <article class="work reveal">
+          <div class="work-frame"><img src="img/home-3.jpg" alt=""></div>
+          <div class="work-cap" data-en="The god of figure skating, even after an Olympic failure. What is the Malinin phenomenon?" data-ru="Бог фигурки – даже после олимпийского провала. В чем феномен Малинина?">Бог фигурки – даже после олимпийского провала. В чем феномен Малинина?</div>
+        </article>
+
+        <article class="work reveal">
+          <div class="work-frame"><img src="img/home-4.jpg" alt=""></div>
+          <div class="work-cap" data-en="All about Uzbekistan's rise: Khusanov, Shomurodov, Cannavaro" data-ru="Все о взлете сборной Узбекистана: Хусанов, Шомуродов, Каннаваро">Все о взлете сборной Узбекистана: Хусанов, Шомуродов, Каннаваро</div>
+        </article>
+
+        <div class="vpair reveal">
+          <div class="vert"><img src="img/home-5.jpg" alt=""></div>
+          <div class="vert"><img src="img/home-6.jpg" alt=""></div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- 3. НБА награды 25/26 — пара -->
-  <section class="sec series">
-    <div class="sec-label reveal" data-en="a series of covers on the race for individual NBA awards (2025/26)" data-ru="серия обложек к материалам о гонке за личные награды НБА (2025/26)">серия обложек к материалам о гонке за личные награды НБА (2025/26)</div>
-    <div class="sec-body reveal">
-      <div class="pair">
-        <div class="cell"><img src="img/nba-awards-1.jpg" alt=""></div>
-        <div class="cell"><img src="img/nba-awards-2.jpg" alt=""></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. Грани мужества — сетка 2x2 -->
-  <section class="sec series">
-    <div class="sec-label reveal" data-en="photo illustrations for the project 'Facets of Courage'" data-ru="фотоиллюстрации для проекта «Грани мужества»">фотоиллюстрации для проекта «Грани мужества»</div>
-    <div class="sec-body reveal">
-      <div class="pair">
-        <div class="cell"><img src="img/courage-1.jpg" alt=""></div>
-        <div class="cell"><img src="img/courage-2.jpg" alt=""></div>
-        <div class="cell"><img src="img/courage-3.jpg" alt=""></div>
-        <div class="cell"><img src="img/courage-4.jpg" alt=""></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. ЦСКА Евролига — широкая + пара + широкая -->
-  <section class="sec series">
-    <div class="sec-label reveal" data-en="a series of covers on CSKA's EuroLeague victory" data-ru="серия обложек к материалам о победе ЦСКА в Евролиге">серия обложек к материалам о победе ЦСКА в Евролиге</div>
-    <div class="sec-body reveal">
-      <div class="feed">
-        <div class="wide"><img src="img/cska-1.jpg" alt=""></div>
-        <div class="pair">
-          <div class="cell"><img src="img/cska-2.jpg" alt=""></div>
-          <div class="cell"><img src="img/cska-3.jpg" alt=""></div>
-        </div>
-        <div class="wide"><img src="img/cska-4.jpg" alt=""></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. Итоги года 2025 — вертикали -->
-  <section class="sec series">
-    <div class="sec-label reveal" data-en="photo illustrations for the project 'Year in Review 2025'" data-ru="фотоиллюстрации для проекта «Итоги года 2025»">фотоиллюстрации для проекта «Итоги года 2025»</div>
-    <div class="sec-body reveal">
-      <div class="vpair">
-        <div class="vert"><img src="img/year-1.jpg" alt=""></div>
-        <div class="vert"><img src="img/year-2.jpg" alt=""></div>
-      </div>
+  <!-- BRIDGE -->
+  <section class="sec bridge">
+    <div class="sec-label"></div>
+    <div class="sec-body">
+      <a href="work.html" class="reveal" data-en="See all work" data-ru="Смотреть все работы">Смотреть все работы</a>
     </div>
   </section>
 
@@ -262,67 +227,93 @@
 </div>
 
 <script>
+  // ---- lightbox for wide covers only ----
   (function(){
-    const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lightboxImg'),lbClose=document.getElementById('lightboxClose');
+    const lb=document.getElementById('lightbox');
+    const lbImg=document.getElementById('lightboxImg');
+    const lbClose=document.getElementById('lightboxClose');
     function open(src){lbImg.src=src;lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
     function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';}
-    document.querySelectorAll('.work-frame img, .cell img, .wide img, .vert img').forEach(img=>{
+    document.querySelectorAll('.work-frame img, .vert img').forEach(img=>{
+      img.parentElement.style.cursor='zoom-in';
       img.parentElement.addEventListener('click',()=>open(img.currentSrc||img.src));
     });
-    lb.addEventListener('click',close);lbClose.addEventListener('click',close);
+    lb.addEventListener('click',close);
+    lbClose.addEventListener('click',close);
     document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
   })();
+</script>
+
+<script>
+  function applyLang(lang){
+    document.querySelectorAll('.lang button').forEach(x=>x.classList.toggle('on',x.dataset.lang===lang));
+    document.querySelectorAll('[data-'+lang+']').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)});
+    document.documentElement.lang=lang;
+    if(window.setTickerLang) window.setTickerLang(lang);
+  }
   document.querySelectorAll('.lang button').forEach(b=>{
-    b.addEventListener('click',()=>{
-      const lang=b.dataset.lang;
-      document.querySelectorAll('.lang button').forEach(x=>x.classList.toggle('on',x===b));
-      document.querySelectorAll('[data-'+lang+']').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang)});
-      document.documentElement.lang=lang;
-      if(window.setTickerLang) window.setTickerLang(lang);
-    });
+    b.addEventListener('click',()=>{ applyLang(b.dataset.lang); });
   });
+  window.applyLang=applyLang;
 
   // ===== TICKER: marquee with easter egg + time/score drum =====
   (function(){
     var track=document.getElementById('tickerTrack');
     if(!track) return;
+
     var MSG={
       en:{main:"Open to collaboration", egg:"Arsenal still without a Champions League trophy"},
       ru:{main:"Открыт к сотрудничеству", egg:"Арсенал всё ещё без кубка ЛЧ"}
     };
-    var EVERY=14, TOTAL=28, curLang='ru';
+    var EVERY=14;   // каждый 14-й блок — easter egg
+    var TOTAL=28;   // полупериод: 28 = 2×14, делится на EVERY нацело
+    var curLang='ru';
+
     function buildHalf(lang){
       var html='';
       for(var i=0;i<TOTAL;i++){
         var isEgg=((i+1)%EVERY===0);
-        html+='<span class="'+(isEgg?'egg':'')+'">'+(isEgg?MSG[lang].egg:MSG[lang].main)+'</span><span class="sep">·</span>';
+        var cls=isEgg?'egg':'';
+        var text=isEgg?MSG[lang].egg:MSG[lang].main;
+        html+='<span class="'+cls+'">'+text+'</span><span class="sep">·</span>';
       }
       return html;
     }
-    function render(lang){ curLang=lang; track.innerHTML=buildHalf(lang)+buildHalf(lang); }
+    function render(lang){
+      curLang=lang;
+      // дублируем полупериод дважды → трек уезжает на -50% бесшовно
+      track.innerHTML=buildHalf(lang)+buildHalf(lang);
+    }
     window.setTickerLang=function(lang){ render(lang==='en'?'en':'ru'); };
-    render('ru');
-    var bar=document.querySelector('.ticker');
-    if(bar) bar.addEventListener('click',function(){ window.location.href='mailto:hello@yordmp.com'; });
+    render('en');
+    // применяем английский ко всей странице по умолчанию
+    if(window.applyLang) window.applyLang('en');
+    // клик только по бегущей строке открывает почту (не по часам/счёту)
+    var marquee=document.querySelector('.ticker-marquee');
+    if(marquee){ marquee.style.cursor='pointer'; marquee.addEventListener('click',function(){ window.location.href='mailto:hello@yordmp.com'; }); }
   })();
 
   // ticker drum: time interleaved with match scores from scores.json
   (function(){
     var roll=document.getElementById('drumRoll');
     if(!roll) return;
-    var H=34;
-    var FALLBACK=["NYK 4:1 SAS"];
+    var H=34;                 // высота ячейки = высота тикера
+    var FALLBACK=["NYK 4:1 SAS"];   // запасной счёт, если scores.json недоступен (локально)
+
     function mskTime(){
       var now=new Date();
       var msk=new Date(now.toLocaleString('en-US',{timeZone:'Europe/Moscow'}));
       function p(n){return String(n).padStart(2,'0');}
       return p(msk.getHours())+':'+p(msk.getMinutes())+':'+p(msk.getSeconds());
     }
+
     function build(matches){
       if(!matches||!matches.length) matches=FALLBACK;
+      // последовательность: [время][матч1][время][матч2]...[время] (хвостовое время = бесшовный возврат)
       var seq=[];
       matches.forEach(function(m){ seq.push({t:'time'}); seq.push({t:'score',v:m}); });
-      seq.push({t:'time'});
+      seq.push({t:'time'}); // дубль первого времени для зацикливания
+
       roll.innerHTML='';
       seq.forEach(function(item){
         var cell=document.createElement('div');
@@ -330,15 +321,20 @@
         cell.textContent=item.t==='time'?mskTime():item.v;
         roll.appendChild(cell);
       });
-      var stops=matches.length*2;
-      var dur=stops*5.0;
+
+      // число «остановок» = время + каждый матч (без хвоста-дубля)
+      var stops=matches.length*2;             // [время][матч] на каждый матч
+      var dur=stops*5.0;                      // ~4.5с на остановку
       buildAnim(stops, dur);
     }
+
     var styleEl=document.getElementById('drumAnimStyle')||(function(){
-      var st=document.createElement('style'); st.id='drumAnimStyle'; document.head.appendChild(st); return st;
+      var s=document.createElement('style'); s.id='drumAnimStyle'; document.head.appendChild(s); return s;
     })();
+
     function buildAnim(stops, dur){
-      var frames='', pauseFrac=0.88;
+      // генерим keyframes: на каждой остановке пауза, между — плавный сдвиг на H
+      var frames='', pauseFrac=0.88; // доля времени на паузу
       for(var i=0;i<stops;i++){
         var start=(i/stops)*100;
         var hold=((i+pauseFrac)/stops)*100;
@@ -346,22 +342,27 @@
         frames+=start.toFixed(2)+'%{transform:translateY('+y+'px)}';
         frames+=hold.toFixed(2)+'%{transform:translateY('+y+'px)}';
       }
-      frames+='100%{transform:translateY('+(-stops*H)+'px)}';
+      frames+='100%{transform:translateY('+(-stops*H)+'px)}'; // доезд до хвоста-дубля
       styleEl.textContent='@keyframes drumRoll{'+frames+'}'
         +'.drum-roll{animation:drumRoll '+dur+'s infinite}';
     }
+
+    // обновление времени во всех time-ячейках каждую секунду
     function tickTime(){
       var t=mskTime();
       roll.querySelectorAll('.drum-time').forEach(function(c){c.textContent=t;});
     }
-    fetch('scores.json',{cache:'no-store'})
+
+    // загрузка scores.json (на проде по http); фолбэк при file:// или ошибке
+    fetch('scores.json?v='+Date.now(),{cache:'no-store'})
       .then(function(r){ return r.ok?r.json():null; })
       .then(function(data){ build(data&&data.matches); })
       .catch(function(){ build(FALLBACK); });
+
     setInterval(tickTime,1000);
   })();
 
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.06,rootMargin:'0px 0px -4% 0px'});
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -5% 0px'});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 </body>
