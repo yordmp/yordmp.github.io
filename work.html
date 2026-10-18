@@ -315,6 +315,14 @@
     });
   })();
 
+  // переход с главной по «Смотреть все работы» (/work#more): браузер уже прокрутил к якорю,
+  // убираем #more из адресной строки — позиция страницы не меняется
+  if(location.hash==='#more'){
+    window.addEventListener('load',function(){
+      setTimeout(function(){ history.replaceState(null,'',location.pathname+location.search); },400);
+    });
+  }
+
   // клики по #contact: плавный скролл к блоку, без #contact в адресной строке
   document.querySelectorAll('a[href="#contact"]').forEach(function(a){
     a.addEventListener('click',function(e){
